@@ -1,0 +1,30 @@
+.header {
+    position: relative;
+    z-index: 1;
+    box-shadow: -4px -6px 20px 0 $black;
+}
+
+.header-left {
+    background-color: $orange-dark;
+}
+
+.header-right {
+    background-color: $orange;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    color: $white;
+    padding: 15px;
+}
+
+.header__title {
+    font-size: 18px;
+    font-weight: $bold;
+}
+
+.header__logo-img {
+    width: 40px;
+}

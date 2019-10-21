@@ -1,0 +1,51 @@
+.sidebar {
+    padding: 30px;
+    background-color: $light-grey;
+}
+
+.sidebar__title {
+    font-size: 20px;
+    color: $orange;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $orange;
+}
+
+.sidebar__list {
+    position: relative;
+    border-bottom: 1px solid $grey;
+    padding-right: 65px;
+    button {
+        background-color: transparent;
+        border: 0;
+    }
+
+    &:hover {
+        .sidebar__list-delete {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: initial;
+        }
+    }
+}
+
+.sidebar__list-item {
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 20px 0;
+    color: $dark-grey;
+    background-color: transparent;
+}
+
+.sidebar__list-delete {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    color: $dark-grey;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: $dur $ease;
+}
+

@@ -1,0 +1,27 @@
+// Colors
+$white: #fff;
+$black: #000;
+$orange-dark:#e35b00;
+$orange: #ff6600;
+$light-grey: #eee;
+$dark-grey: #666;
+$grey: #ccc;
+
+$font-default: 'OpenSans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+// font-weights
+$regular: 400;
+$light: 300;
+$bold: 700;
+
+// transitions
+$dur: 300ms;
+$ease: ease;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
