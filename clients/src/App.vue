@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import config from './config';
 import Header from './components/Header.vue';
 import CurrencyList from './components/CurrencyList.vue';
 
@@ -38,7 +37,7 @@ export default {
 
 	data() {
 		return {
-			currency: config.getCurrencies || [],
+			currency: JSON.parse(localStorage.getItem('currencies')) || [],
 			filteredCurrnecy: null,
 			editCurrencyObj: {},
 			searchTerm: ''

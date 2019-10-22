@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import config from '../config';
 
 export default {
     name: "EditCurrency",
@@ -73,7 +72,7 @@ export default {
         },
 
         formValidation() {
-            const currencies = config.getCurrencies;
+            const currencies = JSON.parse(localStorage.getItem('currencies'));
             Object.values(currencies).forEach((currency) => {
                 if (this.currencyCode.toLowerCase() === currency.currencyCode.toLowerCase()) {
                     this.errors.codeExist.status = true;
