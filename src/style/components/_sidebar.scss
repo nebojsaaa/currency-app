@@ -1,6 +1,14 @@
+.sidebar-wrap {
+    padding: 0 0 0 15px;
+    height: 100%;
+    background-color: $light-grey;
+}
+
 .sidebar {
     padding: 30px;
-    background-color: $light-grey;
+    @include max-width($mobile) {
+        padding: 15px;
+    }
 }
 
 .sidebar__title {
@@ -17,6 +25,7 @@
     button {
         background-color: transparent;
         border: 0;
+        outline: none;
     }
 
     &:hover {
@@ -35,6 +44,11 @@
     padding: 20px 0;
     color: $dark-grey;
     background-color: transparent;
+    transition: $dur $ease;
+    outline: none;
+    &.sidebar__list-item--active {
+        color: $orange;
+    }
 }
 
 .sidebar__list-delete {
@@ -47,5 +61,25 @@
     opacity: 0;
     pointer-events: none;
     transition: $dur $ease;
+}
+
+.sidebar__btn {
+    width: 100%;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 20px 0;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    color: $orange;
+	border-bottom: 1px solid $grey;
+	&::before {
+		content: url('./assets/icons/ico-plus.svg');
+    	display: inline-block;
+		width: 16px;
+		vertical-align: middle;
+		margin-right: 10px;
+	}
 }
 

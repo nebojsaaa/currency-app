@@ -1,17 +1,28 @@
 <template>
-    <div>
-        <h3>Add Currency</h3>
-        <form @submit.prevent="addCurrency">
-            <label>Currency code<input type="text" required name="currencyCode" v-model="currencyCode"></label>
-            <span>{{this.errors.codeExist.message}}</span>
-            <label>Currency symbol<input type="text" required name="currencySymbol" v-model="currencySymbol"></label>
-            <span>{{this.errors.symbolExist.message}}</span>
-            <input type="submit" value="Sumbit">
+    <div class="form-wrap">
+        <h3 class="form__title">Add Currency</h3>
+        <form class="form" @submit.prevent="addCurrency">
+            <div class="form__input-wrap">
+                <span class="form__label">Currency code</span>
+                <div class="form__input-wrap-field">
+                    <input class="form__input" v-bind:class="{'form__input--error':this.errors.codeExist.status}" type="text" required name="currencyCode" v-model="currencyCode" />
+                    <span class="form__input-error-msg">{{this.errors.codeExist.message}}</span>
+                </div>
+            </div>
+             <div class="form__input-wrap">
+                <span class="form__label">Currency symbol</span>
+                <div class="form__input-wrap-field">
+                    <input class="form__input" v-bind:class="{'form__input--error':this.errors.symbolExist.status}" type="text" required name="currencySymbol" v-model="currencySymbol" />
+                    <span class="form__input-error-msg">{{this.errors.symbolExist.message}}</span>
+                </div>
+             </div>
+            <input type="submit" value="Sumbit" class="form__submit-btn">
         </form>
     </div>
 </template>
 
 <script>
+import config from '../config';
 import uuid from 'uuid';
 
 export default {
@@ -35,6 +46,12 @@ export default {
 
     methods: {
         addCurrency() {
+            // reset values
+            this.errors.codeExist.status = false;
+            this.errors.symbolExist.status = false;
+            this.errors.codeExist.message = '';
+            this.errors.symbolExist.message = '';
+
             this.formValidation();
             if (this.errors.codeExist.status || this.errors.symbolExist.status) return;
 
@@ -46,42 +63,30 @@ export default {
 
             // Send up to parent
             this.$emit('add-currency', newObj);
+            
             // Reset values
             this.currencyCode = '';
             this.currencySymbol = '';
         },
 
         formValidation() {
-            const currencies = this.getCurrencies();
-
+            const currencies = config.getCurrencies;
             Object.values(currencies).forEach((currency) => {
-                console.log(this.currencyCode.toLowerCase() === currency.currencyCode.toLowerCase());
                 if (this.currencyCode.toLowerCase() === currency.currencyCode.toLowerCase()) {
                     this.errors.codeExist.status = true;
                     this.errors.codeExist.message = 'Code already exist.';
-                    continue;
-                } else if (this.currencyCode.length !== 3) {
+                }
+
+                if (this.currencyCode.length !== 3) {
                     this.errors.codeExist.status = true;
-                    this.errors.codeExist.message = 'Code must 3 characters long.';
-                    continue;
-                } else {
-                    this.errors.codeExist.status = false;
-                    this.errors.codeExist.message = '';
+                    this.errors.codeExist.message = 'Must be 3 character long';
                 }
 
                 if (this.currencySymbol.toLowerCase() === currency.currencySymbol.toLowerCase()) {
                     this.errors.symbolExist.status = true;
                     this.errors.symbolExist.message = 'Symbol already exist.';
-                    continue;
-                } else {
-                    this.errors.symbolExist.status = false;
-                    this.errors.symbolExist.message = '';
-                }
+                } 
             });
-        },
-
-        getCurrencies() {
-            return JSON.parse(localStorage.getItem('currencies')) || [];
         }
     }
 }

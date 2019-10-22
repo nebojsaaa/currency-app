@@ -4,20 +4,25 @@
     box-shadow: -4px -6px 20px 0 $black;
 }
 
-.header-left {
-    background-color: $orange-dark;
-}
-
-.header-right {
-    background-color: $orange;
-}
-
 .header-left,
 .header-right {
     display: flex;
     align-items: center;
     color: $white;
     padding: 15px;
+}
+
+
+.header-right {
+    background-color: $orange;
+    @include max-width($mobile) {
+       padding: 15px 30px;
+	}
+}
+
+.header-left {
+    background-color: $orange-dark;
+    padding: 15px 15px 15px 30px;
 }
 
 .header__title {

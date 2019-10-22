@@ -1,0 +1,84 @@
+input,
+button {
+	font-family: $font-default;
+	border: 0;
+	margin: 0;
+	padding: 0;
+    background-color: transparent;
+}
+
+.form-wrap {
+	position: relative;
+	top: -50px;
+    width: 75%;
+    @include max-width($mobile) {
+        width: 100%;
+        top: auto;
+        padding: 15px;
+	}
+}
+
+.form__title {
+    font-size: 20px;
+    color: $orange;
+    padding: 14px 0;
+    border-bottom: 1px solid $orange;
+}
+
+.form__input-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.form__input-wrap-field {
+    width: 100%;
+}
+
+.form__label {
+    width: 100%;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid $grey;
+    background-color: $white;
+	transition: $dur $ease;
+	&:invalid {
+        background-color: $white;
+    }
+    &:active,
+    &:focus {
+        border: 1px solid $dark-grey;
+    }
+    &.form__input--error {
+        border: 1px solid $orange;
+    }
+}
+
+.form__input-error-msg {
+    display: block;
+    font-size: 14px;
+    padding-left: 10px;
+    margin-top: 5px;
+    color: $orange;
+}
+
+.form__submit-btn {
+	display: block;
+	font-size: 14px;
+	font-weight: $bold;
+	letter-spacing: 0.015em;
+	text-transform: uppercase;
+	margin-left: auto;
+	padding: 10px 35px;
+	background-color: $orange;
+	color: $white;
+	border-radius: 5px;
+}
+

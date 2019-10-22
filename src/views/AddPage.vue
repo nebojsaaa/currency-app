@@ -1,3 +1,7 @@
+<template>
+	<AddCurrency v-on:add-currency="newCurrencyObject" />
+</template>
+
 <script>
 import AddCurrency from '../components/AddCurrency';
 
@@ -14,12 +18,6 @@ export default {
     }
 }
 </script>
-
-<template>
-    <div>
-		<AddCurrency v-on:add-currency="newCurrencyObject" />
-    </div>
-</template>
 
 <style lang="sass" scoped>
 

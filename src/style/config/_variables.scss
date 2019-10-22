@@ -18,10 +18,7 @@ $bold: 700;
 $dur: 300ms;
 $ease: ease;
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
-) !default;
+// Breakpoints
+$mobile: '768px';
+$tablet: '1024px';
+$desktop: '1200px';

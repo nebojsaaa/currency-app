@@ -2,9 +2,12 @@
 @import "~bootstrap/scss/mixins/_breakpoints.scss";
 @import './config/reset';
 @import './base/fonts';
+@import './helpers/mixins';
 @import './config/variables';
 @import './components/header';
 @import './components/sidebar';
+@import './components/search';
+@import './components/form';
 
 *,
 html,
@@ -20,7 +23,15 @@ body {
 }
 
 #app {
-    height: 100%;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	overflow-x: hidden;
+	@include max-width($mobile) {
+		height: 100%;
+	}
+}
+
+.main {
+	height: 100%;
 }

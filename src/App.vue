@@ -2,11 +2,17 @@
 	<div id="app">
 		<Header />
 		<div class="row">
-			<div class="col-md-4">
-				<div class="search">
-					<input type="text" name="search-cur" id="search-cur" v-model="searchTerm" placeholder="Serach...">
-				</div>
-				<CurrencyList v-bind:currency="(filteredCurrnecy || currency)" v-on:del-currency="deleteCurrency" v-on:edit-currency="editCurrency" />
+			<div class="search col-md-4 col-sm-12">
+				<input type="text" name="search-cur" class="search__input" id="search-cur" v-model="searchTerm" placeholder="Seach...">
+			</div>
+		</div>
+		<div class="main row">
+			<div class="sidebar-wrap col-md-4 col-sm-12">
+				<CurrencyList 
+					v-bind:currency="(filteredCurrnecy || currency)"
+					v-on:del-currency="deleteCurrency"
+					v-on:edit-currency="editCurrency"
+				/>
 			</div>
 			<div class="col-md-8">
 				<router-view
@@ -20,6 +26,7 @@
 </template>
 
 <script>
+import config from './config';
 import Header from './components/Header.vue';
 import CurrencyList from './components/CurrencyList.vue';
 
@@ -31,7 +38,7 @@ export default {
 
 	data() {
 		return {
-			currency: JSON.parse(localStorage.getItem('currencies')) || [],
+			currency: config.getCurrencies || [],
 			filteredCurrnecy: null,
 			editCurrencyObj: {},
 			searchTerm: ''
@@ -47,8 +54,6 @@ export default {
 
 	methods: {
 		addCurrency(newObj) {
-			if (Object.keys(newObj).length === 0) return 'Your object is empty';
-
 			this.currency = [...this.currency, newObj];
 			localStorage.setItem('currencies', JSON.stringify(this.currency));
 		},
@@ -72,10 +77,6 @@ export default {
 			this.currency = updateCurrencies;
 			localStorage.setItem('currencies', JSON.stringify(this.currency));
 		}
-	},
-
-	computed: {
-
 	}
 }
 </script>
