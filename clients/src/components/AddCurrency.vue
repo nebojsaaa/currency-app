@@ -69,7 +69,7 @@ export default {
         },
 
         formValidation() {
-            const currencies = JSON.parse(localStorage.getItem('currencies'));
+            const currencies = JSON.parse(localStorage.getItem('currencies')) || [];
             Object.values(currencies).forEach((currency) => {
                 if (this.currencyCode.toLowerCase() === currency.currencyCode.toLowerCase()) {
                     this.errors.codeExist.status = true;
